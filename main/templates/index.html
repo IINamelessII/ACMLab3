@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <h3 class="variant">My variant is 22, y = 3 * cos(x) ^ 2 - x ^ 0.5</h3>
+    {% if x %}
+        <ul class="x-list">
+            {% for i in x %}
+            <li class="x">{{i}}</li>
+            {% endfor %}
+        </ul>
+        <ul class="y-list">
+            {% for i in y %}
+            <li class="y">{{i}}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <a href="{% url 'gen-x' %}" class="gen-x">Generate X and calculate their Y</a>
+    {% endif %}
+    </body>
+</html>
