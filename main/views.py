@@ -1,7 +1,7 @@
 from functools import reduce
 from math import cos
 from operator import mul
-from django.shortcuts import render
+from django.shortcuts import HttpResponse, render
 
 
 def gen_xy():
@@ -35,6 +35,10 @@ def str_interpolation():
     ])
 
 
+def x_and_y_to_csv(x, y):
+    return None if len(x) != len(y) else 'xp,yp\n' + '\n'.join([str(x[i]) + ',' + str(y[i]) for i in range(len(x))])
+
+
 def index(request, stage=0):
     context = {}
     if stage > 0:
@@ -44,3 +48,15 @@ def index(request, stage=0):
         context['y_gen_by_i'] = [interpolation(i) for i in x]
         context['polynomial'] = str_interpolation()
     return render(request, 'index.html', context=context)
+
+
+def data(request):
+    x = [i * 0.03 for i in range(101)]
+    y = [3 * cos(i) ** 2 - i ** 0.5 for i in x]
+    return HttpResponse(x_and_y_to_csv(x, y), content_type='text/csv')
+
+
+def data_interpolated(request):
+    x = [i * 0.03 for i in range(101)]
+    y_interpolate = [interpolation(i) for i in x]
+    return HttpResponse(x_and_y_to_csv(x, y_interpolate), content_type='text/csv')

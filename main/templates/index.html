@@ -11,7 +11,7 @@
 </head>
 <body>
     <h1>Hello World</h1>
-    <h3 class="variant">My variant is 22, y = 3 * cos(x) ^ 2 - x ^ 0.5</h3>
+    <h3 class="variant">My variant is 22, y = 3 * cos(x) ^ 2 - x ^ 0.5 and Newton's polynomial</h3>
     {% if x %}
         <p class="label">X:</p>
         <ul class="x-list">
@@ -39,6 +39,15 @@
         </ul>
     {% elif x %}
         <a href="/2" class="button">Generate polynomial and Y by interpolation</a>
+    {% endif %}
+    {% if "3" in request.path %}
+    <script src="http://d3js.org/d3.v4.js"></script>
+    <div id="my_dataviz"></div>
+    <div id="my_dataviz_i"></div>
+    <script src="{% static 'build_plot.js' %}"></script>
+    <script src="{% static 'build_plot_i.js' %}"></script>
+    {% elif y_gen_by_i %}
+        <a href="/3" class="button">Build Plots</a>
     {% endif %}
 </body>
 </html>
