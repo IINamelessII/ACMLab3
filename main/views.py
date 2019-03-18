@@ -26,6 +26,15 @@ def interpolation(x):
     )
 
 
+def str_interpolation():
+    x, y = gen_xy()
+    return 'Nn(x) = ' + '+'.join([
+        'f(' + ';'.join(['{:.1f}'.format(x[j]) for j in range(i + 1)]) + ')' +
+        ''.join(['(x-{:.1f})'.format(x[j]) for j in range(i)])
+        for i in range(len(x))
+    ])
+
+
 def index(request):
     return render(request, 'index.html')
 
@@ -34,7 +43,10 @@ def generate_x(request):
     x, y = gen_xy()
     return render(request, 'index.html', {'x': x, 'y': y})
 
-def calc_y_by_interpolation(request):
+def calc_y_by_interpolation_and_str(request):
     x, y = gen_xy()
-    test = [interpolation(i) for i in x]
-    return render(request, 'index.html', {'x': x, 'y': y, 'test': test})
+    y_gen_by_i = [interpolation(i) for i in x]
+    context = {
+        'x': x, 'y': y, 'y_gen_by_i': y_gen_by_i, 'polynomial':str_interpolation()
+    }
+    return render(request, 'index.html', context)

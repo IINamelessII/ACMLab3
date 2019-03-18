@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>ACM Lab3 Oleh Serikov</title>
 </head>
 <body>
     <h1>Hello World</h1>
@@ -25,15 +25,17 @@
     {% else %}
         <a href="{% url 'gen-x' %}" class="button">Generate X and calculate their Y</a>
     {% endif %}
-    {% if test %}
+    {% if y_gen_by_i %}
+        <p class="label">Newton interpolation polynomial:</p>
+        <div class="polynomial">{{ polynomial }}</div>
         <p class="label">Y by Interpolation:</p>
         <ul class="x-list">
-            {% for i in test %}
+            {% for i in y_gen_by_i %}
             <li class="x">{{i}}</li>
             {% endfor %}
         </ul>
     {% elif x %}
-        <a href="{% url 'y-by-interpolation' %}" class="button">Generate Y by interpolation</a>
+        <a href="{% url 'interpolation' %}" class="button">Generate polynomial and Y by interpolation</a>
     {% endif %}
 </body>
 </html>
