@@ -8,10 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ACM Lab3 Oleh Serikov</title>
     <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/IINamelessII/IINamelessII.github.io/master/assets/favicon.png"/>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
 </head>
 <body>
     <h1>Hello World</h1>
-    <h3 class="variant">My variant is 22, y = 3 * cos(x) ^ 2 - x ^ 0.5 and Newton's polynomial</h3>
+    <h3 class="variant">My variant is 22, y = 3 * cos(x) ^ 2 - x ^ 0.5 and Newton's polynomial, a = 0, b = 3</h3>
     {% if x %}
         <p class="label">X:</p>
         <ul class="x-list">
@@ -42,10 +43,12 @@
     {% endif %}
     {% if "3" in request.path %}
     <script src="http://d3js.org/d3.v4.js"></script>
-    <div id="my_dataviz"></div>
-    <div id="my_dataviz_i"></div>
+    <div class="plots">
+        <div id="my_dataviz"></div>
+        <div id="my_dataviz_i"></div>
+        <div class="my_dataviz_e"></div>
+    </div>
     <script src="{% static 'build_plot.js' %}"></script>
-    <script src="{% static 'build_plot_i.js' %}"></script>
     {% elif y_gen_by_i %}
         <a href="/3" class="button">Build Plots</a>
     {% endif %}
