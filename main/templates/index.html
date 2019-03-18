@@ -23,7 +23,7 @@
             {% endfor %}
         </ul>
     {% else %}
-        <a href="{% url 'gen-x' %}" class="button">Generate X and calculate their Y</a>
+        <a href="/1" class="button">Generate X and calculate their Y</a>
     {% endif %}
     {% if y_gen_by_i %}
         <p class="label">Newton interpolation polynomial:</p>
@@ -35,7 +35,7 @@
             {% endfor %}
         </ul>
     {% elif x %}
-        <a href="{% url 'interpolation' %}" class="button">Generate polynomial and Y by interpolation</a>
+        <a href="/2" class="button">Generate polynomial and Y by interpolation</a>
     {% endif %}
 </body>
 </html>

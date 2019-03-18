@@ -35,18 +35,12 @@ def str_interpolation():
     ])
 
 
-def index(request):
-    return render(request, 'index.html')
-
-
-def generate_x(request):
-    x, y = gen_xy()
-    return render(request, 'index.html', {'x': x, 'y': y})
-
-def calc_y_by_interpolation_and_str(request):
-    x, y = gen_xy()
-    y_gen_by_i = [interpolation(i) for i in x]
-    context = {
-        'x': x, 'y': y, 'y_gen_by_i': y_gen_by_i, 'polynomial':str_interpolation()
-    }
-    return render(request, 'index.html', context)
+def index(request, stage=0):
+    context = {}
+    if stage > 0:
+        x, y = gen_xy()
+        context['x'], context['y'] = x, y
+    if stage > 1:
+        context['y_gen_by_i'] = [interpolation(i) for i in x]
+        context['polynomial'] = str_interpolation()
+    return render(request, 'index.html', context=context)
