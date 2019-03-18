@@ -10,18 +10,30 @@
     <h1>Hello World</h1>
     <h3 class="variant">My variant is 22, y = 3 * cos(x) ^ 2 - x ^ 0.5</h3>
     {% if x %}
+        <p class="label">X:</p>
         <ul class="x-list">
             {% for i in x %}
             <li class="x">{{i}}</li>
             {% endfor %}
         </ul>
+        <p class="label">Y:</p>
         <ul class="y-list">
             {% for i in y %}
             <li class="y">{{i}}</li>
             {% endfor %}
         </ul>
     {% else %}
-        <a href="{% url 'gen-x' %}" class="gen-x">Generate X and calculate their Y</a>
+        <a href="{% url 'gen-x' %}" class="button">Generate X and calculate their Y</a>
     {% endif %}
-    </body>
+    {% if test %}
+        <p class="label">Y by Interpolation:</p>
+        <ul class="x-list">
+            {% for i in test %}
+            <li class="x">{{i}}</li>
+            {% endfor %}
+        </ul>
+    {% elif x %}
+        <a href="{% url 'y-by-interpolation' %}" class="button">Generate Y by interpolation</a>
+    {% endif %}
+</body>
 </html>
