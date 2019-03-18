@@ -1,3 +1,22 @@
 .plots {
     display: flex;
 }
+
+.plot-label {
+    margin-left: 100px;
+}
+
+.plot {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.link {
+    margin-left: 100px;
+    text-decoration: none;
+    color: black;
+}
+
+.link:hover {
+    color: red;
+}

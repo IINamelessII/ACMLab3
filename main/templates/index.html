@@ -44,8 +44,14 @@
     {% if "3" in request.path %}
     <script src="http://d3js.org/d3.v4.js"></script>
     <div class="plots">
-        <div id="my_dataviz"></div>
-        <div id="my_dataviz_i"></div>
+        <div id="my_dataviz" class="plot">
+            <h3 class="plot-label">y = 3 * cos(x) ^ 2 - x ^ 0.5</h3>
+            <a class="link" href="/data.csv" class="download-link">Download data set</a>
+        </div>
+        <div id="my_dataviz_i" class="plot">
+            <h3 class="plot-label">y = Nn (Newton's polynomial)</h3>
+            <a class="link" href="/data_interpolated.csv" class="download-link">Download data set</a>
+        </div>
         <div class="my_dataviz_e"></div>
     </div>
     <script src="{% static 'build_plot.js' %}"></script>
