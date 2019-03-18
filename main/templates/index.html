@@ -52,7 +52,10 @@
             <h3 class="plot-label">y = Nn (Newton's polynomial)</h3>
             <a class="link" href="/data_interpolated.csv" class="download-link">Download data set</a>
         </div>
-        <div class="my_dataviz_e"></div>
+        <div id="my_dataviz_b" class="plot">
+            <h3 class="plot-label">y = Pn(x) - f(x)</h3>
+            <a class="link" href="/data_bial.csv" class="download-link">Download data set</a>
+        </div>
     </div>
     <script src="{% static 'build_plot.js' %}"></script>
     {% elif y_gen_by_i %}

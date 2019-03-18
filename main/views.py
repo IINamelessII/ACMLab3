@@ -4,9 +4,13 @@ from operator import mul
 from django.shortcuts import HttpResponse, render
 
 
+def my_variant(x):
+    return 3 * cos(x) ** 2 - x ** 0.5
+
+
 def gen_xy():
     x = [i * 0.3 for i in range(11)]
-    y = [3 * cos(i) ** 2 - i ** 0.5 for i in x]
+    y = [my_variant(i) for i in x]
     return x, y
 
 
@@ -52,7 +56,7 @@ def index(request, stage=0):
 
 def data(request):
     x = [i * 0.03 for i in range(101)]
-    y = [3 * cos(i) ** 2 - i ** 0.5 for i in x]
+    y = [my_variant(i) for i in x]
     return HttpResponse(x_and_y_to_csv(x, y), content_type='text/csv')
 
 
@@ -60,3 +64,9 @@ def data_interpolated(request):
     x = [i * 0.03 for i in range(101)]
     y_interpolate = [interpolation(i) for i in x]
     return HttpResponse(x_and_y_to_csv(x, y_interpolate), content_type='text/csv')
+
+
+def data_bial(request):
+    x = [i * 0.03 for i in range(101)]
+    y_bial = [(interpolation(i) - my_variant(i)) for i in x]
+    return HttpResponse(x_and_y_to_csv(x, y_bial), content_type='text/csv')
